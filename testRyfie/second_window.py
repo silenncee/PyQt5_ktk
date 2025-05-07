@@ -10,7 +10,8 @@ class SecondWin(QWidget):
 
     def initui(self):
         self.setWindowTitle("Здоровье2")
-        self.setGeometry(100, 100, 400, 600)
+        self.resize(400, 300)
+        self.move(1000, 600)
 
         self.layout = QVBoxLayout()
 
