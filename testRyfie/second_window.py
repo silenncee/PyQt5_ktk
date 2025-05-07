@@ -14,7 +14,7 @@ class TestWin(QWidget):
         global time
     # time = QTime(0, 1, 0)
         time = time.AddSecs(-1)
-        self.timer = QTimer
+        self.timer = QTimer()
         self.timer.timeout.connect(self.self.timer1event)
         self.timer.start(1000)
         self.timer.stop()
