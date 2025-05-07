@@ -7,8 +7,9 @@ class ThirdWin(QWidget):
         self.initui()
 
     def initui(self):
-        self.setWindowTitle("Третье окно")
-        self.setGeometry(100, 100, 400, 300)
+        self.setWindowTitle("Результат")
+        self.resize(400, 300)
+        self.move(1000, 600)
 
         layout = QVBoxLayout()
 
