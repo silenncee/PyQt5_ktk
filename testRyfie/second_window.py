@@ -1,6 +1,34 @@
 from PyQt5.QtWidgets import QLabel, QWidget, QVBoxLayout, QLineEdit, QPushButton
 import instr
+from PyQt5.QtCore import Qt, QTimer, QTime
+from PyQt5.QtGui import QFont
 from third_window import ThirdWin
+
+time = QTime(0, 0, 15)
+# time.addSecs(-1)
+# time.toString("hh:mm:ss")
+
+class TestWin(QWidget):
+    def timer1event(self):
+
+        global time
+    # time = QTime(0, 1, 0)
+        time = time.AddSecs(-1)
+        self.timer = QTimer
+        self.timer.timeout.connect(self.self.timer1event)
+        self.timer.start(1000)
+        self.timer.stop()
+        self.text_timer.setText(time.toString("hh:mm:ss"))
+        self.text_timer.setFont(QFont("Times", 36, QFont.Bold))
+        self.text_timer.setStyleSheet("color: rgb(0, 0, 0)")
+        if time.toString("hh:mm:ss") == "00:00:00":
+            self.timer.stop()
+
+
+    def connects(self):
+        self.bth_test1.clicked.connect(self.timer_test)
+        self.bth_test1.clicked.connect(self.timer_test)
+
 
 
 class SecondWin(QWidget):
@@ -9,7 +37,7 @@ class SecondWin(QWidget):
         self.initui()
 
     def initui(self):
-        self.setWindowTitle("Здоровье2")
+        self.setWindowTitle("Результат")
         self.resize(400, 300)
         self.move(1000, 600)
 
@@ -32,9 +60,9 @@ class SecondWin(QWidget):
         self.info_text = QLabel(instr.text2)
         self.layout.addWidget(self.info_text)
 
-        self.start_test_button = QPushButton("Начать первый тест")
-        self.start_test_button.setFixedWidth(150)
-        self.layout.addWidget(self.start_test_button)
+        self.bth_test1 = QPushButton("Начать первый тест")
+        self.bth_test1.setFixedWidth(150)
+        self.layout.addWidget(self.bth_test1)
 
         self.additional_input = QLineEdit()
         self.additional_input.setFixedWidth(200)
@@ -66,3 +94,4 @@ class SecondWin(QWidget):
         self.third_window = ThirdWin()
         self.third_window.show()
         self.close()
+
