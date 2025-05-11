@@ -10,6 +10,8 @@ class TestWin(QWidget):
         super().__init__()
         self.init_ui()
         self.timer = QTimer()
+        self.timer1 = QTimer()
+        self.timer2 = QTimer()
         self.time = QTime(0, 0, 0)  # Начальное время
 
     def init_ui(self):
@@ -43,26 +45,26 @@ class TestWin(QWidget):
         if self.time == QTime(0, 0):
 
             self.timer.stop()
-            
+
 
 
     def start_timer2(self):
-        self.time = QTime(0, 0, 30)
-        self.timer.timeout.connect(self.timer2_event)
-        self.timer.start(1000)
+        self.time = QTime(0, 0, 45)
+        self.timer1.timeout.connect(self.timer2_event)
+        self.timer1.start(1000)
         self.timer2_event()
 
     def timer2_event(self):
         self.time = self.time.addSecs(-1)
         self.text_timer.setText(self.time.toString("mm:ss"))
         if self.time == QTime(0, 0):
-            self.timer.stop()
+            self.timer1.stop()
 
 
     def start_timer3(self):
         self.time = QTime(0, 0, 59)
-        self.timer.timeout.connect(self.timer3_event)
-        self.timer.start(1000)
+        self.timer2.timeout.connect(self.timer3_event)
+        self.timer2.start(1000)
         self.timer3_event()
 
     def timer3_event(self):
@@ -76,7 +78,7 @@ class TestWin(QWidget):
 
         self.text_timer.setText(self.time.toString("mm:ss"))
         if self.time == QTime(0, 0):
-            self.timer.stop()
+            self.timer2.stop()
 
 
 class SecondWin(QWidget):
