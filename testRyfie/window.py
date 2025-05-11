@@ -1,7 +1,8 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QLabel, QPushButton, QApplication, QWidget, QVBoxLayout
 import instr
-from second_window import SecondWin
+from second_window import  TestWin, SecondWin
+# from second_window import FinalWin
 
 class MainWin(QWidget):
     def __init__(self):
@@ -31,6 +32,9 @@ class MainWin(QWidget):
 
     def open_second_window(self):
         self.second_win = SecondWin()
+        self.testwin = TestWin()
+        # self.finalwin = FinalWin()
+
         self.second_win.show()
         self.hide()
 
@@ -39,5 +43,4 @@ main_win = MainWin()
 main_win.set_appear()
 main_win.show()
 app.exec_()
-
 
